@@ -9,7 +9,7 @@ class RecipeController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @ingredients = Ingredient.all
+    @users = User.all
   end
 
   def create
@@ -17,14 +17,14 @@ class RecipeController < ApplicationController
     if @recipe.save
       redirect_to action: 'list'
     else
-      @subjects = Subject.all
+      @users = User.all
       render action: 'new'
     end
   end
 
   def edit
     @recipe = Recipe.find(params[:id])
-    @ingredients = Ingredient.all
+    @users = User.all
   end
 
   def update
@@ -32,7 +32,7 @@ class RecipeController < ApplicationController
     if @recipe.update_attributes(recipe_param)
       redirect_to action: 'show', id: @recipe
     else
-      @subjects = Subject.all
+      @users = User.all
       render action: 'edit'
     end
   end
@@ -50,7 +50,7 @@ class RecipeController < ApplicationController
     params.require(:recipes).permit(:ingredients, :name, :instructions)
   end
 
-  def show_ingredients
-    @ingredient = Ingredient.find(params[:id])
+  def show_users
+    @user = User.find(params[:id])
   end
 end
