@@ -1,3 +1,9 @@
+<ul id = "users">
+   <% Users.find(:all).each do |c| %>
+   <li><%= link_to c.name, :action => "show_users", :id => c.id %></li>
+   <% end %>
+</ul>
+
 <% if @recipes.blank? %>
 <p>There are not any recipes currently in the system.</p>
 <% else %>
@@ -5,7 +11,12 @@
 
 <ul id = "recipes">
    <% @recipes.each do |c| %>
-   <li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
+   <li>
+     <%= link_to c.name, {:action => 'show', :id => c.id} -%>
+     <b><%= link_to 'Edit', {:action => "edit", 
+       :id => c.id} %></b>
+     <b> <%= link_to "Delete", {:action => 'delete', :id => c.id}, :confirm => "Delete this recipe?" %></b>
+   </li>
    <% end %>
 </ul>
 

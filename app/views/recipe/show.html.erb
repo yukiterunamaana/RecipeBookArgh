@@ -1,0 +1,15 @@
+<h1><%= @recipe.name %></h1>
+
+<p>
+   <strong>Name: </strong> $<%= @recipe.name %><br />
+   <strong>Instructions :</strong> <%= @recipe.instructions %><br />
+   <strong>Author: </strong> <%= link_to @recipe.user.nickname, 
+     :action => "show_subjects", :id => @recipe.user.id %><br />
+<!--    <strong>Created Date:</strong> <%= @recipe.created_at %><br /> -->
+</p>
+
+<p><%= @recipe.description %></p>
+
+<hr />
+
+<%= link_to 'Back', {:action => 'list'} %>

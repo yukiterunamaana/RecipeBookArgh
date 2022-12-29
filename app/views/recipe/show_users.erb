@@ -1,0 +1,7 @@
+<h1><%= @user.nickname -%></h1>
+
+<ul>
+   <% @user.recipes.each do |c| %>
+   <li><%= link_to c.name, :action => "show", :id => c.id -%></li>
+   <% end %>
+</ul>
